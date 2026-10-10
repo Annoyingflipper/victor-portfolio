@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Victor Maniglia CV - QA Automation Engineer</title>
+<!-- Source of /public/Victor-Maniglia-CV.pdf. Edit here, then run: npm run cv -->
+<style>
+@page{size:Letter;margin:0.42in 0.55in}
+body{font-family:"Helvetica Neue",Arial,sans-serif;color:#222;font-size:9.9pt;line-height:1.32;margin:0}
+h1{text-align:center;font-size:21pt;margin:0;letter-spacing:.5px}
+h2.role{text-align:center;font-size:12pt;margin:2px 0 4px;font-weight:600}
+.contact{text-align:center;font-size:9.4pt;color:#444}
+.contact a{color:#444;text-decoration:none}
+hr{border:0;border-top:1px solid #555;margin:7px 0 6px}
+h3{font-size:11.2pt;margin:0 0 5px;text-transform:uppercase}
+.job{display:flex;justify-content:space-between;font-weight:700;margin-top:6px}
+.sub{font-size:9.2pt;color:#555;margin-top:1px}
+ul{margin:3px 0 4px 16px;padding:0}li{margin:1.6px 0}
+p{margin:0}
+.results{display:flex;justify-content:space-between;text-align:center;margin-top:7px;gap:6px}
+.results div{flex:1;border:1px solid #bbb;border-radius:4px;padding:4px 2px}
+.results b{display:block;font-size:13pt}
+.results span{font-size:8.3pt;color:#444}
+</style></head><body>
+<h1>VICTOR MANIGLIA</h1>
+<h2 class="role">QA AUTOMATION ENGINEER · PLAYWRIGHT + TYPESCRIPT · WEB, API &amp; AI-ASSISTED TESTING</h2>
+<div class="contact">Caracas, Venezuela · Remote · Available in US time zones · English &amp; Spanish (native)<br>
+<a href="mailto:victor.maniglia.dev@gmail.com">victor.maniglia.dev@gmail.com</a> · <a href="https://linkedin.com/in/victormaniglia">linkedin.com/in/victormaniglia</a> · <a href="https://github.com/Annoyingflipper">github.com/Annoyingflipper</a></div>
+<hr>
+<h3>Professional Summary</h3>
+<p>QA Automation Engineer and the sole QA on a SaaS communications platform used by banks. I own the test suite end to end: a Playwright + TypeScript framework in GitHub Actions and Jenkins, REST API testing against Java/Spring Boot services, SQL data checks, JMeter load tests and production root-cause analysis. I use AI tools (Claude Code, Codex, Gemini) every day to write and debug tests faster, and I test AI features too. I explain technical problems clearly to developers and clients in English and Spanish.</p>
+<div class="results"><div><b>300+</b><span>automated E2E &amp; API tests</span></div><div><b>65%</b><span>less regression time</span></div><div><b>80%</b><span>less test-writing time (AI)</span></div><div><b>400+</b><span>defects found</span></div><div><b>20–50</b><span>support cases / week</span></div></div>
+<hr>
+<h3>Professional Experience</h3>
+<div class="job"><span>Automation Engineer | DANAconnect</span><span>February 2024 – Present</span></div>
+<p class="sub">Omnichannel communications SaaS (AWS Partner of the Year NOLA 2026) · sole QA alongside 2 developers · hybrid</p>
+<ul>
+<li>Cut regression time by 65% by building and maintaining 300+ Playwright + TypeScript E2E and API tests (Page Object Model, reusable fixtures, test-data setup) that run on every release in GitHub Actions and Jenkins.</li>
+<li>Own quality for every feature and release before production: plan coverage, design test cases, report defects and release risk, and push test updates and small fixes through Git pull requests.</li>
+<li>Found the real cause of a delivery degradation that looked like a client sending 10M+ emails: campaign-activation data in SQL showed ~3M, because a campaign had run 2 extra times on empty records. We stopped the duplicate runs before the traffic affected other clients.</li>
+<li>Built the test suite from scratch for a new Conversations module (frontend redesign and new conversation-flow nodes).</li>
+<li>Reduced test-writing and debugging time by 80% with Claude Code, Codex and Gemini, reviewing every AI-generated change; test AI/chatbot features for wrong answers, hallucinations and prompt injection.</li>
+<li>Test REST APIs with Postman and Swagger (payloads, status codes, error handling), run JMeter load tests, and check login, sessions, roles and tenant data isolation; work with Docker and Azure DevOps. Handle 20–50 support cases per week.</li>
+</ul>
+<div class="job"><span>QA Engineer | Auronix / DaCodes</span><span>January 2023 – February 2024</span></div>
+<ul>
+<li>Tested iOS and Android apps, chatbots and integrated flows in client Scrum squads (team of 5 QAs under a QA Lead), designing cases from acceptance criteria with equivalence partitioning and boundary values.</li>
+<li>Automated chatbot regression with Python and Selenium; presented results in client demos. Employee of the Month twice in a row.</li>
+</ul>
+<hr>
+<h3>Technical Skills</h3>
+<ul>
+<li><b>AUTOMATION:</b> Playwright, Selenium, Cypress · TypeScript, JavaScript, Python · Page Object Model, fixtures, test data</li>
+<li><b>API, DATA &amp; PERFORMANCE:</b> REST APIs, Postman, Swagger · PostgreSQL, MySQL, MongoDB, SQL · JMeter</li>
+<li><b>CI/CD:</b> GitHub Actions, Jenkins, GitLab, Azure DevOps · Docker · Git (branches, pull requests)</li>
+<li><b>AI-ASSISTED QA:</b> Claude Code, Codex, Gemini, Perplexity · testing AI/LLM features</li>
+<li><b>PROCESS:</b> risk-based testing, regression, root cause analysis · Jira, Xray, TestRail, PractiTest · Scrum</li>
+</ul>
+<hr>
+<h3>Education &amp; Courses</h3>
+<div class="job"><span>Computer Engineering | Universidad Simón Bolívar</span><span>2019 – 2023</span></div>
+<p style="margin-top:2px">AWS Cloud Practitioner · Scrum Foundation Professional · Test Automation with Playwright and Python · Selenium · SQL</p>
+<hr>
+<p><b>Also:</b> Co-founder &amp; English teacher, VOS Learning Center (2023 – Present): coaching students and explaining complex topics simply.</p>
+</body></html>
