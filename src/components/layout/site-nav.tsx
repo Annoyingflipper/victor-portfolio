@@ -18,10 +18,10 @@ import { ui } from "@/content/ui";
 import { ThemeToggle } from "./theme-toggle";
 
 const links = [
-  { href: "#work", label: ui.nav.work },
-  { href: "#cases", label: ui.nav.cases },
-  { href: "#stack", label: ui.nav.stack },
-  { href: "#contact", label: ui.nav.contact },
+  { hash: "work", label: ui.nav.work },
+  { hash: "cases", label: ui.nav.cases },
+  { hash: "stack", label: ui.nav.stack },
+  { hash: "contact", label: ui.nav.contact },
 ];
 
 export function SiteNav({ lang }: { lang: Locale }) {
@@ -61,8 +61,8 @@ export function SiteNav({ lang }: { lang: Locale }) {
         <nav aria-label="Main" className="hidden items-center gap-7 md:flex">
           {links.map((link) => (
             <a
-              key={link.href}
-              href={link.href}
+              key={link.hash}
+              href={`/${lang}#${link.hash}`}
               className="text-[15px] decoration-1 underline-offset-[6px] hover:underline"
             >
               {link.label[lang]}
@@ -133,8 +133,8 @@ export function SiteNav({ lang }: { lang: Locale }) {
             <nav aria-label="Mobile" className="mt-8 flex flex-col">
               {links.map((link, i) => (
                 <motion.a
-                  key={link.href}
-                  href={link.href}
+                  key={link.hash}
+                  href={`/${lang}#${link.hash}`}
                   onClick={close}
                   className="flex items-baseline gap-4 border-b border-rule py-4 font-serif text-4xl"
                   initial={{ opacity: 0, y: 8 }}

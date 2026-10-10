@@ -4,6 +4,8 @@ import { ui } from "@/content/ui";
 import { SiteNav } from "@/components/layout/site-nav";
 import { Hero } from "@/components/sections/hero";
 import { Metrics } from "@/components/sections/metrics";
+import { Cases } from "@/components/sections/cases";
+import { Contact } from "@/components/sections/contact";
 
 export default async function Home({ params }: PageProps<"/[lang]">) {
   const { lang } = await params;
@@ -21,6 +23,10 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       <main id="main" className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-5">
         <Hero lang={lang} />
         <Metrics lang={lang} />
+        {/* 01 Work (timeline from 21st.dev) lands next */}
+        <Cases lang={lang} index={2} />
+        {/* 03 How I test, 04 Stack */}
+        <Contact lang={lang} index={5} />
       </main>
     </>
   );
