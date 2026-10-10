@@ -85,7 +85,7 @@ export const profile = {
     {
       value: 50,
       prefix: "20–",
-      suffix: "/wk",
+      suffix: { en: "/wk", es: "/sem" },
       label: { en: "support cases", es: "casos de soporte" },
       context: {
         en: "Technical and customer cases I reproduce and resolve each week.",

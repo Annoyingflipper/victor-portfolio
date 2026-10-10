@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import { locales, profile } from "@/content/profile";
 import { hasLocale, t } from "@/lib/i18n";
+import { MotionProvider } from "@/components/layout/motion-provider";
 import "../globals.css";
 
 const serif = Instrument_Serif({
@@ -43,7 +44,9 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body>{children}</body>
+      <body>
+        <MotionProvider>{children}</MotionProvider>
+      </body>
     </html>
   );
 }
