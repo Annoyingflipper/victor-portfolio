@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { locales, profile } from "@/content/profile";
 import { hasLocale, t } from "@/lib/i18n";
 import { SiteNav } from "@/components/layout/site-nav";
+import { SiteFooter } from "@/components/layout/site-footer";
 import { caseCopy, CaseSteps } from "@/components/case-steps";
 
 export function generateStaticParams() {
@@ -67,6 +68,7 @@ export default async function CasePage({ params }: PageProps<"/[lang]/cases/[slu
           </Link>
         </nav>
       </main>
+      <SiteFooter lang={lang} />
     </>
   );
 }

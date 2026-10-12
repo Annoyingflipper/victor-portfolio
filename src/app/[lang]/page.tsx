@@ -7,6 +7,12 @@ import { Metrics } from "@/components/sections/metrics";
 import { Experience } from "@/components/sections/experience";
 import { Cases } from "@/components/sections/cases";
 import { Contact } from "@/components/sections/contact";
+import { Projects } from "@/components/sections/projects";
+import { Process } from "@/components/sections/process";
+import { Stack } from "@/components/sections/stack";
+import { BeyondQa } from "@/components/sections/beyond-qa";
+import { SiteFooter } from "@/components/layout/site-footer";
+import { ConsoleReport } from "@/components/layout/console-report";
 
 export default async function Home({ params }: PageProps<"/[lang]">) {
   const { lang } = await params;
@@ -26,9 +32,14 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         <Metrics lang={lang} />
         <Experience lang={lang} index={1} />
         <Cases lang={lang} index={2} />
-        {/* 03 How I test, 04 Stack */}
-        <Contact lang={lang} index={5} />
+        <Projects lang={lang} index={3} />
+        <Process lang={lang} index={4} />
+        <Stack lang={lang} index={5} />
+        <BeyondQa lang={lang} />
+        <Contact lang={lang} index={6} />
       </main>
+      <SiteFooter lang={lang} />
+      <ConsoleReport />
     </>
   );
 }
