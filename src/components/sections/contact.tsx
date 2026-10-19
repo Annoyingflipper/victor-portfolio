@@ -4,6 +4,7 @@ import { ui } from "@/content/ui";
 import { t } from "@/lib/i18n";
 import { SectionHeading } from "@/components/section-heading";
 import { ContactForm } from "@/components/contact-form";
+import { CopyButton } from "@/components/ui/copy-button";
 
 const copy = {
   section: { en: "Contact", es: "Contacto" },
@@ -12,6 +13,9 @@ const copy = {
     es: "¿Buscas a alguien para QA o automatización de pruebas? Cuéntame del rol.",
   },
   orWrite: { en: "Or write to me here:", es: "O escríbeme aquí:" },
+  copy: { en: "Copy email", es: "Copiar email" },
+  copied: { en: "Copied", es: "Copiado" },
+  copyFailed: { en: "Copy failed", es: "No se pudo copiar" },
 };
 
 export function Contact({ lang, index }: { lang: Locale; index: number }) {
@@ -31,13 +35,22 @@ export function Contact({ lang, index }: { lang: Locale; index: number }) {
             {t(copy.title, lang)}
           </p>
 
-          <a
-            href={`mailto:${profile.contact.email}`}
-            className="mt-10 inline-block font-mono text-[15px] break-all underline decoration-rule decoration-1 underline-offset-[6px] hover:decoration-ink sm:text-base"
-            data-testid="contact-email"
-          >
-            {profile.contact.email}
-          </a>
+          <div className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-3">
+            <a
+              href={`mailto:${profile.contact.email}`}
+              className="inline-block font-mono text-[15px] break-all underline decoration-rule decoration-1 underline-offset-[6px] hover:decoration-ink sm:text-base"
+              data-testid="contact-email"
+            >
+              {profile.contact.email}
+            </a>
+            <CopyButton
+              value={profile.contact.email}
+              label={t(copy.copy, lang)}
+              copiedLabel={t(copy.copied, lang)}
+              errorLabel={t(copy.copyFailed, lang)}
+              testId="copy-email"
+            />
+          </div>
 
           <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-[15px]">
             {links.map((link) => (
