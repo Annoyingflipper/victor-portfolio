@@ -23,6 +23,10 @@ export async function generateMetadata({
   return {
     title: `${t(item.title, lang)} · ${profile.name}`,
     description: t(item.context, lang),
+    alternates: {
+      canonical: `/${lang}/cases/${slug}`,
+      languages: { en: `/en/cases/${slug}`, es: `/es/cases/${slug}` },
+    },
   };
 }
 

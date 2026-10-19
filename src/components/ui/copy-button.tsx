@@ -9,7 +9,7 @@
  */
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { LazyMotion, domAnimation, m, useReducedMotion } from "motion/react";
 
 const EASE = [0.23, 1, 0.32, 1] as const;
 const CELL = {
@@ -171,101 +171,103 @@ export function CopyButton({
   ];
 
   return (
-    <motion.button
-      type="button"
-      disabled={disabled}
-      aria-label={label}
-      onClick={() => {
-        void copy(value);
-      }}
-      whileTap={disabled || reduced ? undefined : { y: 1 }}
-      transition={CELL}
-      style={{ touchAction: "manipulation" }}
-      data-testid={testId}
-      data-status={status}
-      className={`inline-flex h-9 items-center gap-2 border border-ink px-3 font-mono text-xs text-ink transition-colors select-none hover:bg-ink hover:text-paper disabled:opacity-50 data-[status=copied]:border-pass data-[status=copied]:text-pass data-[status=copied]:hover:bg-transparent ${className}`}
-    >
-      <span className="grid size-[14px] shrink-0" aria-hidden="true">
-        <motion.svg
-          viewBox="0 0 14 14"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={1.5}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="col-start-1 row-start-1 size-[14px]"
-          initial={false}
-          animate={{
-            opacity: status === "idle" ? 1 : 0,
-            scale: status === "idle" ? 1 : 0.92,
-          }}
-          transition={fade}
-        >
-          <path d="M9.6 5.1V3.7A1.7 1.7 0 0 0 7.9 2H3.7A1.7 1.7 0 0 0 2 3.7v4.2a1.7 1.7 0 0 0 1.7 1.7h1.4" />
-          <rect x="5.1" y="5.1" width="6.9" height="6.9" rx="1.7" />
-        </motion.svg>
-
-        <motion.svg
-          viewBox="0 0 14 14"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={1.5}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="col-start-1 row-start-1 size-[14px]"
-          initial={false}
-          animate={{
-            opacity: status === "copied" ? 1 : 0,
-            scale: status === "copied" ? 1 : 0.92,
-          }}
-          transition={fade}
-        >
-          <motion.path
-            d="M2.9 7.4 5.6 10.1 11.1 4"
+    <LazyMotion features={domAnimation} strict>
+      <m.button
+        type="button"
+        disabled={disabled}
+        aria-label={label}
+        onClick={() => {
+          void copy(value);
+        }}
+        whileTap={disabled || reduced ? undefined : { y: 1 }}
+        transition={CELL}
+        style={{ touchAction: "manipulation" }}
+        data-testid={testId}
+        data-status={status}
+        className={`inline-flex h-9 items-center gap-2 border border-ink px-3 font-mono text-xs text-ink transition-colors select-none hover:bg-ink hover:text-paper disabled:opacity-50 data-[status=copied]:border-pass data-[status=copied]:text-pass data-[status=copied]:hover:bg-transparent ${className}`}
+      >
+        <span className="grid size-[14px] shrink-0" aria-hidden="true">
+          <m.svg
+            viewBox="0 0 14 14"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={1.5}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="col-start-1 row-start-1 size-[14px]"
             initial={false}
-            animate={{ pathLength: status === "copied" ? 1 : 0 }}
-            transition={draw}
-          />
-        </motion.svg>
-
-        <motion.svg
-          viewBox="0 0 14 14"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={1.5}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="col-start-1 row-start-1 size-[14px]"
-          initial={false}
-          animate={{
-            opacity: status === "error" ? 1 : 0,
-            scale: status === "error" ? 1 : 0.92,
-          }}
-          transition={fade}
-        >
-          <path d="M3.6 3.6 10.4 10.4" />
-          <path d="M10.4 3.6 3.6 10.4" />
-        </motion.svg>
-      </span>
-
-      <span aria-hidden="true" className="relative grid">
-        {labels.map(([key, text]) => (
-          <motion.span
-            key={key}
-            initial={false}
-            animate={key === status ? { opacity: 1, y: 0 } : { opacity: 0, y: 3 }}
+            animate={{
+              opacity: status === "idle" ? 1 : 0,
+              scale: status === "idle" ? 1 : 0.92,
+            }}
             transition={fade}
-            className="col-start-1 row-start-1 whitespace-nowrap"
           >
-            {text}
-          </motion.span>
-        ))}
-      </span>
+            <path d="M9.6 5.1V3.7A1.7 1.7 0 0 0 7.9 2H3.7A1.7 1.7 0 0 0 2 3.7v4.2a1.7 1.7 0 0 0 1.7 1.7h1.4" />
+            <rect x="5.1" y="5.1" width="6.9" height="6.9" rx="1.7" />
+          </m.svg>
 
-      <span role="status" aria-live="polite" className="sr-only">
-        {status === "copied" ? copiedLabel : status === "error" ? errorLabel : ""}
-      </span>
-    </motion.button>
+          <m.svg
+            viewBox="0 0 14 14"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={1.5}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="col-start-1 row-start-1 size-[14px]"
+            initial={false}
+            animate={{
+              opacity: status === "copied" ? 1 : 0,
+              scale: status === "copied" ? 1 : 0.92,
+            }}
+            transition={fade}
+          >
+            <m.path
+              d="M2.9 7.4 5.6 10.1 11.1 4"
+              initial={false}
+              animate={{ pathLength: status === "copied" ? 1 : 0 }}
+              transition={draw}
+            />
+          </m.svg>
+
+          <m.svg
+            viewBox="0 0 14 14"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={1.5}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="col-start-1 row-start-1 size-[14px]"
+            initial={false}
+            animate={{
+              opacity: status === "error" ? 1 : 0,
+              scale: status === "error" ? 1 : 0.92,
+            }}
+            transition={fade}
+          >
+            <path d="M3.6 3.6 10.4 10.4" />
+            <path d="M10.4 3.6 3.6 10.4" />
+          </m.svg>
+        </span>
+
+        <span aria-hidden="true" className="relative grid">
+          {labels.map(([key, text]) => (
+            <m.span
+              key={key}
+              initial={false}
+              animate={key === status ? { opacity: 1, y: 0 } : { opacity: 0, y: 3 }}
+              transition={fade}
+              className="col-start-1 row-start-1 whitespace-nowrap"
+            >
+              {text}
+            </m.span>
+          ))}
+        </span>
+
+        <span role="status" aria-live="polite" className="sr-only">
+          {status === "copied" ? copiedLabel : status === "error" ? errorLabel : ""}
+        </span>
+      </m.button>
+    </LazyMotion>
   );
 }
 

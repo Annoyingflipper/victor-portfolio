@@ -12,7 +12,10 @@ export function ConsoleReport() {
     const timer = setTimeout(() => {
       const external = [...document.querySelectorAll<HTMLAnchorElement>('a[target="_blank"]')];
       const checks: [string, boolean][] = [
-        ["page has exactly one h1", document.querySelectorAll("h1").length === 1],
+        [
+          "page has exactly one visible h1",
+          [...document.querySelectorAll("h1")].filter((h) => h.checkVisibility()).length === 1,
+        ],
         ["every image has alt text", [...document.images].every((img) => img.alt.trim() !== "")],
         ["no horizontal scroll", document.documentElement.scrollWidth <= window.innerWidth],
         ["external links use rel=noopener", external.every((a) => a.rel.includes("noopener"))],

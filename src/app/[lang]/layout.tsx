@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import { locales, profile } from "@/content/profile";
 import { hasLocale, t } from "@/lib/i18n";
-import { MotionProvider } from "@/components/layout/motion-provider";
+import { siteUrl } from "@/lib/site";
 import "../globals.css";
 
 const serif = Instrument_Serif({
@@ -25,9 +25,28 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Promise<Metadata> {
   const { lang } = await params;
   if (!hasLocale(lang)) return {};
+  const title = `${profile.name} · ${t(profile.role, lang)}`;
+  const description = t(profile.positioning, lang);
   return {
-    title: `${profile.name} · ${t(profile.role, lang)}`,
-    description: t(profile.positioning, lang),
+    metadataBase: new URL(siteUrl),
+    title,
+    description,
+    authors: [{ name: profile.name, url: profile.contact.linkedin }],
+    alternates: {
+      canonical: `/${lang}`,
+      languages: { en: "/en", es: "/es", "x-default": "/en" },
+    },
+    openGraph: {
+      type: "profile",
+      title,
+      description,
+      url: `/${lang}`,
+      siteName: profile.name,
+      locale: lang === "es" ? "es_VE" : "en_US",
+      firstName: "Victor",
+      lastName: "Maniglia",
+    },
+    twitter: { card: "summary_large_image", title, description },
   };
 }
 
@@ -44,9 +63,7 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body>
-        <MotionProvider>{children}</MotionProvider>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

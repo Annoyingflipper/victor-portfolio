@@ -62,8 +62,8 @@ export function Hero({ lang }: { lang: Locale }) {
         <Image
           src={photo}
           alt={t(profile.photo.alt, lang)}
-          priority
-          placeholder="blur"
+          fetchPriority="high"
+          loading="eager"
           sizes="(min-width: 768px) 33vw, 60vw"
           className="aspect-[3/4] w-full object-cover object-[60%_30%] mix-blend-multiply contrast-[1.05] grayscale dark:opacity-85 dark:mix-blend-normal"
         />

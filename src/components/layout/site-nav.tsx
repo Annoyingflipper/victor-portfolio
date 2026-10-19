@@ -10,7 +10,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { AnimatePresence, motion } from "motion/react";
 import { Menu, X } from "lucide-react";
 import type { Locale } from "@/content/profile";
 import { profile } from "@/content/profile";
@@ -102,60 +101,54 @@ export function SiteNav({ lang }: { lang: Locale }) {
         </div>
       </div>
 
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            id="mobile-menu"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Menu"
-            className="fixed inset-0 z-50 flex flex-col bg-paper px-4 pt-6 pb-10 md:hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            <div className="flex items-center justify-between border-b border-rule pb-4">
-              <span className="font-serif text-2xl leading-none">V. Maniglia</span>
-              <button
-                type="button"
-                className="grid size-9 place-items-center"
-                onClick={() => {
-                  close();
-                  menuButton.current?.focus();
-                }}
-                aria-label="Close menu"
-                autoFocus
-              >
-                <X className="size-5" aria-hidden="true" />
-              </button>
-            </div>
-            <nav aria-label="Mobile" className="mt-8 flex flex-col">
-              {links.map((link, i) => (
-                <motion.a
-                  key={link.hash}
-                  href={`/${lang}#${link.hash}`}
-                  onClick={close}
-                  className="flex items-baseline gap-4 border-b border-rule py-4 font-serif text-4xl"
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.05 * i + 0.05 }}
-                >
-                  <span className="font-mono text-xs text-ink-muted">0{i + 1}</span>
-                  {link.label[lang]}
-                </motion.a>
-              ))}
-            </nav>
-            <a
-              href={profile.contact.cv}
-              download
-              className="mt-auto inline-flex justify-center bg-ink px-5 py-3 text-paper"
+      {isOpen && (
+        <div
+          id="mobile-menu"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Menu"
+          className="fixed inset-0 z-50 flex animate-in flex-col bg-paper px-4 pt-6 pb-10 duration-200 fade-in motion-reduce:animate-none md:hidden"
+        >
+          <div className="flex items-center justify-between border-b border-rule pb-4">
+            <span className="font-serif text-2xl leading-none">V. Maniglia</span>
+            <button
+              type="button"
+              className="grid size-9 place-items-center"
+              onClick={() => {
+                close();
+                menuButton.current?.focus();
+              }}
+              aria-label="Close menu"
+              autoFocus
             >
-              {ui.downloadCv[lang]}
-            </a>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              <X className="size-5" aria-hidden="true" />
+            </button>
+          </div>
+          <nav aria-label="Mobile" className="mt-8 flex flex-col">
+            {links.map((link, i) => (
+              <a
+                key={link.hash}
+                href={`/${lang}#${link.hash}`}
+                onClick={close}
+                className="flex animate-in items-baseline gap-4 border-b border-rule py-4 font-serif text-4xl fill-mode-both fade-in slide-in-from-bottom-2 motion-reduce:animate-none"
+                style={{ animationDelay: `${50 * i + 50}ms` }}
+              >
+                <span className="font-mono text-xs text-ink-muted" aria-hidden="true">
+                  0{i + 1}
+                </span>
+                {link.label[lang]}
+              </a>
+            ))}
+          </nav>
+          <a
+            href={profile.contact.cv}
+            download
+            className="mt-auto inline-flex justify-center bg-ink px-5 py-3 text-paper"
+          >
+            {ui.downloadCv[lang]}
+          </a>
+        </div>
+      )}
     </header>
   );
 }
