@@ -31,10 +31,7 @@ export function CaseSteps({
     <dl className="grid gap-6">
       {steps.map((step, i) => (
         <div key={i} className="grid gap-1.5 sm:grid-cols-[7.5rem_1fr] sm:gap-6">
-          <dt className="pt-1 font-mono text-xs text-ink-muted">
-            {i === 2 ? <span className="text-pass">✓ </span> : null}
-            {t(step.label, lang)}
-          </dt>
+          <dt className="pt-1 font-mono text-xs text-ink-muted">{t(step.label, lang)}</dt>
           <dd className={size === "lg" ? "text-xl leading-relaxed" : "text-lg leading-relaxed"}>
             {t(step.body, lang)}
           </dd>

@@ -12,7 +12,7 @@ const copy = {
   view: { en: "View on GitHub", es: "Ver en GitHub" },
 };
 
-/** Personal projects from profile.ts. While the list is empty it shows a skipped test. */
+/** Personal projects from profile.ts. While the list is empty it shows a reserved slot. */
 export function Projects({ lang, index }: { lang: Locale; index: number }) {
   const { projects } = profile;
 
@@ -21,11 +21,8 @@ export function Projects({ lang, index }: { lang: Locale; index: number }) {
       <SectionHeading id="projects" index={index} title={t(copy.section, lang)} />
 
       {projects.length === 0 ? (
-        <div className="mt-10 border border-dashed border-rule px-5 py-6 font-mono text-sm">
-          <p className="text-ink-muted">
-            ○ <span className="text-ink">test.skip</span>(&quot;side projects&quot;)
-          </p>
-          <p className="mt-3 font-sans text-base text-ink-muted">{t(copy.empty, lang)}</p>
+        <div className="mt-10 border border-dashed border-rule px-5 py-6">
+          <p className="font-sans text-base text-ink-muted">{t(copy.empty, lang)}</p>
         </div>
       ) : (
         <ul className="mt-10 grid gap-x-10 md:grid-cols-2">

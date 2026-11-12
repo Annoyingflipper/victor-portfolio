@@ -57,8 +57,7 @@ export function ContactForm({ lang }: { lang: Locale }) {
   if (state.status === "sent" && dismissed !== state) {
     return (
       <div role="status" className="border-t border-ink pt-6" data-testid="contact-sent">
-        <p className="font-mono text-sm text-pass">✓ 200 OK</p>
-        <p className="mt-3 text-lg">{copy.sent[lang]}</p>
+        <p className="text-lg">{copy.sent[lang]}</p>
         <button
           type="button"
           onClick={() => {

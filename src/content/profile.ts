@@ -244,7 +244,7 @@ export const profile = {
     {
       title: { en: "Design the cases", es: "Diseñar los casos" },
       body: {
-        en: "Equivalence partitioning and boundary values, so fewer tests cover more.",
+        en: "Equivalence partitioning and boundary values: fewer tests, more coverage.",
         es: "Particiones de equivalencia y valores límite, para cubrir más con menos pruebas.",
       },
     },
@@ -265,15 +265,15 @@ export const profile = {
     {
       title: { en: "Report bugs", es: "Reportar bugs" },
       body: {
-        en: "Steps, evidence and impact, so a developer can act right away.",
+        en: "Steps, evidence and impact. A developer can act on it right away.",
         es: "Pasos, evidencia e impacto, para que un desarrollador actúe de inmediato.",
       },
     },
     {
       title: { en: "Guard with regression", es: "Proteger con regresión" },
       body: {
-        en: "Each fixed bug becomes a test, so it stays fixed.",
-        es: "Cada bug corregido se vuelve una prueba, para que no regrese.",
+        en: "Each fixed bug becomes a test and stays fixed.",
+        es: "Cada bug corregido se vuelve una prueba y no regresa.",
       },
     },
   ],
