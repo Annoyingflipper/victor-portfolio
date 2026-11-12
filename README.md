@@ -14,7 +14,7 @@ The site is built like a passing test run, so it is tested like one: every push 
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Framework     | Next.js 16 (App Router, Cache Components), React 19, TypeScript                                                                                  |
 | Styling       | Tailwind CSS 4, shadcn/ui tokens, `next/font` (Instrument Serif, Geist, Geist Mono)                                                              |
-| UI components | Adapted from [21st.dev](https://21st.dev): Navbar 1 (HextaUI), Timeline (Hirael), Copy Button (interior.dev). All MIT; credits are in each file. |
+| UI components | Adapted from [21st.dev](https://21st.dev): Navbar 1 (HextaUI), Timeline (Hirael), Copy Button and Logo Marquee (interior.dev). All MIT; credits are in each file. |
 | Motion        | `motion`, loaded only where it is used (copy button); everything else is CSS                                                                     |
 | Contact form  | Server Action + [Resend](https://resend.com), validated with Zod, honeypot and minimum fill time against bots                                    |
 | Testing       | Playwright (Page Object Model + fixtures), `@axe-core/playwright`                                                                                |

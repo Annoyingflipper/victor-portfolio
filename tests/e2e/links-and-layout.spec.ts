@@ -40,3 +40,18 @@ test.describe("layout", () => {
     await expect(portfolio.footerRun).toContainText("all checks passing");
   });
 });
+
+test.describe("stack marquee", () => {
+  test("lists every tool once and stays still with reduced motion", async ({ portfolio }) => {
+    await portfolio.goto("en", "#stack");
+    const band = portfolio.section("stack").getByRole("group", { name: "Tools I use" });
+    const live = band.locator("ul:not([aria-hidden])").first();
+    await expect(live.locator("li")).toHaveCount(27);
+    await expect(live).toContainText("Playwright");
+    await expect(live).toContainText("Claude Code");
+    await expect(band.locator("div.w-max").first()).toHaveAttribute(
+      "style",
+      /translate3d\(0px, 0px, 0px\)/,
+    );
+  });
+});

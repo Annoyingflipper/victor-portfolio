@@ -2,15 +2,29 @@ import type { Locale } from "@/content/profile";
 import { profile } from "@/content/profile";
 import { t } from "@/lib/i18n";
 import { SectionHeading } from "@/components/section-heading";
+import { LogoMarquee } from "@/components/ui/logo-marquee";
 
-const copy = { section: { en: "Stack", es: "Stack" } };
+const copy = {
+  section: { en: "Stack", es: "Stack" },
+  band: { en: "Tools I use", es: "Herramientas que uso" },
+};
 
 /** Tools grouped by what they're for. No skill bars, no percentages. */
 export function Stack({ lang, index }: { lang: Locale; index: number }) {
   return (
     <section aria-labelledby="stack" className="scroll-mt-24 py-16 md:py-24">
       <SectionHeading id="stack" index={index} title={t(copy.section, lang)} />
-      <dl className="mt-10 font-mono text-sm">
+      <LogoMarquee
+        className="mt-8 border-y border-rule"
+        label={t(copy.band, lang)}
+        speed={24}
+        gap={36}
+        items={[...new Set(profile.stack.flatMap((g) => g.items))].map((name) => ({
+          id: name,
+          label: name,
+        }))}
+      />
+      <dl className="mt-6 font-mono text-sm">
         {profile.stack.map((group) => (
           <div
             key={group.group.en}
